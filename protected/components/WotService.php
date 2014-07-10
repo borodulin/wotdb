@@ -353,7 +353,7 @@ class WotService
 		$clan->refresh();
 		foreach ($clan->players as $player){
 			self::updatePlayerTanks($player);
-			self::updatePlayerGlory($player);
+			//self::updatePlayerGlory($player);
 		}
 		WotPlayer::calcRating();
 	}

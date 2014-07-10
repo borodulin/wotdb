@@ -37,3 +37,7 @@ Install instructions.
   8.5. Armor action parse current values from armor.kiev.ua/wot/ resource
   
     sample cron config:  0 */6 * * * /..../wotdb/protected/yiic cron armor
+    
+  8.6. Glory action gets players rating positions
+  
+    sample cron config:  0 */8 * * * /..../wotdb/protected/yiic cron glory

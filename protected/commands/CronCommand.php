@@ -193,4 +193,13 @@ UPDATE wot_clan wc
 SQL;
 		Yii::app()->db->createCommand($sql)->execute(array('clan'=>WotClan::currentClan()->clan_id));	
 	}
+	
+	
+	public function actionGlory()
+	{
+		$clan=WotClan::currentClan();
+		foreach ($clan->players as $player){
+			WotService::updatePlayerGlory($player);
+		}
+	}
 }
