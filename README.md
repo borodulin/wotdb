@@ -16,6 +16,7 @@ Install instructions.
   5. Create database using  "protected/data/schema.sql" and "protected/data/wot_wn8_etv.sql"
   6. If you have Teamspeak server, you can integrate it with by specifying "tsUri" param in protected/config/db.php
   7. Configure cron jobs: 
+  
   7.1. Scan action performs main working set
     sample cron config:  0 */2 * * * /..../wotdb/protected/yiic cron scan
 
