@@ -22,7 +22,7 @@ Install instructions.
 
     sample cron config:  0 */2 * * * /..../wotdb/protected/yiic cron scan
 
-  8.2. ScanStat action calculate current clan statistics values, triggers history
+  8.2. ScanStat action calculates current clan statistics values, triggers history
   
     sample cron config:  0 */6 * * * /..../wotdb/protected/yiic cron clanStat
 
