@@ -30,11 +30,11 @@ Install instructions.
   
     sample cron config:  */15 19-23 * * * /..../wotdb/protected/yiic cron presense
 
-  8.4. Ivanner action parse current values from Ivanner resource
+  8.4. Ivanner action parses current values from Ivanner resource
   
     sample cron config:  0 */6 * * * /..../wotdb/protected/yiic cron ivanner
 
-  8.5. Armor action parse current values from armor.kiev.ua/wot/ resource
+  8.5. Armor action parses current values from armor.kiev.ua/wot/ resource
   
     sample cron config:  0 */6 * * * /..../wotdb/protected/yiic cron armor
     
