@@ -36,7 +36,7 @@ FROM wot_player wp
   FROM wot_player_statistic_history wpsh
     JOIN wot_player_clan wpc
       ON wpsh.player_id = wpc.player_id AND wpc.clan_id = :clan AND wpc.escape_date IS NULL
-  WHERE wpsh.updated_at > DATE_ADD(NOW(), INTERVAL -2 DAY)
+  WHERE wpsh.updated_at >= CURDATE()-INTERVAL 2 DAY
   GROUP BY wpsh.player_id,
            wpsh.statistic_id) a ON a.player_id = wp.player_id AND a.statistic_id = wps.statistic_id
   JOIN wot_player_statistic_history wpsh ON wpsh.updated_at = a.updated_at AND wpsh.player_id = a.player_id AND wpsh.statistic_id = a.statistic_id
@@ -46,6 +46,6 @@ FROM wot_player wp
   FROM wot_player_history wph
     JOIN wot_player_clan wpc
       ON wpc.player_id = wph.player_id AND wpc.clan_id = :clan AND wpc.escape_date IS NULL
-  WHERE wph.updated_at > DATE_ADD(NOW(), INTERVAL -2 DAY)
+  WHERE wph.updated_at >= CURDATE()-INTERVAL 2 DAY
   GROUP BY wph.player_id) s ON s.player_id = wp.player_id
   JOIN wot_player_history wph ON wph.updated_at = s.updated_at AND wph.player_id = s.player_id
