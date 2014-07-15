@@ -92,8 +92,14 @@ SQL;
 				{
 					if(empty($player->playerClan)){
 						if(isset($clientGroups[$memberGroup->getId()]));{
-							$client->addServerGroup($friendGroup->getId());
-							$client->remServerGroup($memberGroup->getId());
+							try {
+								$client->addServerGroup($friendGroup->getId());
+							} catch (Exception $e) {
+							}
+							try {
+								$client->remServerGroup($memberGroup->getId());
+							} catch (Exception $e) {
+							}
 						}
 					}
 					else
