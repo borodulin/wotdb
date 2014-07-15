@@ -42,9 +42,9 @@ FUNCF;
 	$data=RptPlayerPresense::execute('playerPresense');
 	$colModel=array(
 		array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left'),
-		array('name'=>'clan_role_name','index'=>'clan_role_name','width'=>140,'align'=>'left'),
+		array('name'=>'strength','index'=>'strength','width'=>90,'align'=>'right', 'sorttype'=>'number', 'formatter'=>'number', 'firstsortorder'=>'desc'),
 	);
-	$colNames=array('Игрок', 'Должность');
+	$colNames=array('Игрок', 'Сила(Ivanner)');
 	foreach ($data['dates'] as $date){
 		$colModel[]=array('name'=>$date,'index'=>$date,'width'=>20,'align'=>'right','sorttype'=>'number', 'cellattr'=>'js:jqcCellattr','formatter'=>'js:jqcFormatter','firstsortorder'=>'desc');
 		$colNames[]=date('d', strtotime($date));

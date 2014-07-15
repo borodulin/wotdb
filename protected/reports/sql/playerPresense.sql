@@ -1,14 +1,20 @@
 SELECT
   wp.player_id,
   wp.player_name,
-  wcr.clan_role_name,
+  strength.strength,
   a.updated_at AS dte,
   b.dts,
   a.ab,
   a.gb
 FROM wot_player wp
   JOIN wot_player_clan wpc ON wpc.player_id = wp.player_id AND wpc.escape_date IS NULL AND wpc.clan_id = :clan
-  JOIN wot_clan_role wcr  ON wpc.clan_role_id = wcr.clan_role_id
+  JOIN (SELECT 
+  wpt.player_id, 
+  SUM(wt.ivanner_kef) strength
+  FROM wot_player_tank wpt
+  JOIN wot_player_clan wpc ON wpc.player_id=wpt.player_id AND wpc.escape_date IS NULL AND wpc.clan_id=:clan
+  JOIN wot_tank wt ON wt.tank_id=wpt.tank_id AND wt.tank_level=10
+  GROUP BY wpt.player_id) strength ON strength.player_id=wp.player_id
   LEFT JOIN 
     (SELECT 
        a.player_id, 
