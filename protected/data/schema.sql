@@ -703,9 +703,7 @@ CREATE TABLE wot_wn8_etv (
   Tier int(11) NOT NULL,
   Nation varchar(255) DEFAULT NULL,
   Class varchar(255) DEFAULT NULL,
-  PRIMARY KEY (IDNum),
-  CONSTRAINT FK_wot_wn8_etv_wot_tank_tank_id FOREIGN KEY (IDNum)
-  REFERENCES wot_tank (tank_id) ON DELETE RESTRICT ON UPDATE RESTRICT
+  PRIMARY KEY (IDNum)
 )
 ENGINE = INNODB
 AVG_ROW_LENGTH = 187
