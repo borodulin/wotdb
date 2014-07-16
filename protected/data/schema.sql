@@ -796,7 +796,6 @@ COLLATE utf8_general_ci;
 DELIMITER $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER tr_wot_clan_update
 AFTER UPDATE
 ON wot_clan
@@ -832,7 +831,6 @@ END
 $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER tr_wot_player_achievment_update
 AFTER UPDATE
 ON wot_player_achievment
@@ -847,7 +845,6 @@ END
 $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER tr_wot_player_clan_update
 AFTER UPDATE
 ON wot_player_clan
@@ -860,7 +857,6 @@ END
 $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER tr_wot_player_statistic_update
 AFTER UPDATE
 ON wot_player_statistic
@@ -909,7 +905,6 @@ END
 $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER tr_wot_player_tank_update
 AFTER UPDATE
 ON wot_player_tank
@@ -936,7 +931,6 @@ END
 $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER tr_wot_player_update
 AFTER UPDATE
 ON wot_player
@@ -949,7 +943,6 @@ END
 $$
 
 CREATE
-DEFINER = 'root'@'localhost'
 TRIGGER wot_player_tank_statistic_update
 AFTER UPDATE
 ON wot_player_tank_statistic
