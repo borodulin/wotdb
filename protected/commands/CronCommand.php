@@ -56,7 +56,48 @@ SQL;
 		}
 	}
 */
+	
 	public function actionPresense()
+	{
+		Yii::import('ext.teamspeak.libraries.TeamSpeak3.*',true);//cFsOcmiR
+		// connect to local server, authenticate and spawn an object for the virtual server on port 9987
+		$ts3 = TeamSpeak3::factory(Yii::app()->params['tsUri']);
+		$clientList = $ts3->clientList();
+		
+		foreach ($clientList as $client){
+			if(((string)$client['client_platform'])!='ServerQuery'){
+				$info =$client->getInfo();
+		
+				$teamspeak=WotTeamspeak::model()->with(array('player', 'player.playerClan'))->findByPk($info['client_database_id']);
+				if(empty($teamspeak)){
+					if(preg_match('/^\w+/', (string)$client, $matches)){
+						$playerName=$matches[0];
+						$player=WotPlayer::model()->with(array('playerClan'))->findByAttributes(array('player_name'=>$playerName));
+					}
+				}
+				else
+					$player=$teamspeak->player;
+				if(!empty($player))
+				{
+					if(!empty($player->playerClan)){
+						if(empty($teamspeak)){
+							$teamspeak=new WotTeamspeak();
+							$teamspeak->player_id=$player->player_id;
+							$teamspeak->client_database_id=$info['client_database_id'];
+							$teamspeak->save(false);
+						}
+						$sql="INSERT IGNORE INTO wot_presense(updated_at, client_database_id)VALUES(now(),{$info['client_database_id']})";
+						Yii::app()->db->createCommand($sql)->execute();
+					}
+					//						$wins=number_format($stat->wins/$stat->battles*100,2);
+					//						$description="\nПроцент побед: {$wins} \nWN8: {$player->wn8}\nРЭ: {$player->effect}\n";
+					//						$client->modifyDb(array('client_description'=>$description));
+				}
+			}
+		}
+	}
+	
+	public function actionPresense2()
 	{
 		Yii::import('ext.teamspeak.libraries.TeamSpeak3.*',true);//cFsOcmiR
 		// connect to local server, authenticate and spawn an object for the virtual server on port 9987
