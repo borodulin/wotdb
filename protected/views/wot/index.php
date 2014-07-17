@@ -63,7 +63,7 @@ $cs->registerScript($this->getId().'Index','Index.initPeityElements();', CClient
 <div class="clearfix">
 </div>
 <!-- END OVERVIEW STATISTIC BARS-->
-<div class="row-fluid">
+<div class="row">
 	<div class="col-md-4">
 		<!-- BEGIN SAMPLE TABLE widget-->
 		<div class="portlet">
@@ -232,7 +232,7 @@ $this->widget('zii.widgets.grid.CGridView',array(
 		</div>
 	</div>
 </div>
-<div class="row-fluid">
+<div class="row">
 	<div class="col-md-4">
 		<div class="portlet">
 			<div class="portlet-title">
