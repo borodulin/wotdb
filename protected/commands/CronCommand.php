@@ -16,7 +16,7 @@ class CronCommand extends CConsoleCommand
 	
 	public function actionIndex()
 	{
-		echo 'hellow!';
+		echo phpinfo();
 	}
 /*
 	public function actionTsSync()
