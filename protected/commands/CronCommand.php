@@ -103,11 +103,12 @@ SQL;
 		// connect to local server, authenticate and spawn an object for the virtual server on port 9987
 		$ts3 = TeamSpeak3::factory(Yii::app()->params['tsUri']);
 		$clientList = $ts3->clientList();
-		
-		$memberGroup=$ts3->serverGroupGetByName('MUMMI');
+		if(!isset(Yii::app()->params['tsGroupFriend']) || !isset(Yii::app()->params['tsGroupMember']))
+			throw new CException('Необходимо указать группы TS в параметрах db.php');
+		$memberGroup=$ts3->serverGroupGetByName(Yii::app()->params['tsGroupMember']);
 		if(empty($memberGroup))
 			throw new CException('member group is empty');
-		$friendGroup=$ts3->serverGroupGetByName('Друг');
+		$friendGroup=$ts3->serverGroupGetByName(Yii::app()->params['tsGroupFriend']);
 		if(empty($friendGroup))
 			throw new CException('friend group is empty');
 		
