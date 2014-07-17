@@ -16,7 +16,7 @@ class CronCommand extends CConsoleCommand
 	
 	public function actionIndex()
 	{
-		echo phpinfo();
+		file_put_contents(Yii::app()->getRuntimePath().'/phpinfo.txt', phpinfo());
 	}
 /*
 	public function actionTsSync()
