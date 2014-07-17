@@ -16,7 +16,11 @@ class CronCommand extends CConsoleCommand
 	
 	public function actionIndex()
 	{
-		file_put_contents(Yii::app()->getRuntimePath().'/phpinfo.txt', phpinfo());
+		ob_start();
+		phpinfo();
+		$variable = ob_get_contents();
+		ob_get_clean();
+		file_put_contents(Yii::app()->getRuntimePath().'/phpinfo.txt', $variable);
 	}
 /*
 	public function actionTsSync()
