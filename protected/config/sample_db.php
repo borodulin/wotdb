@@ -17,5 +17,7 @@ return array(
 				'clan'=>11111,
 				'tsUri'=>"serverquery://USERNAME:PASSWORD@127.0.0.1:10011/?server_port=9987",
 				'application_id'=>'GO AND GET IT!!! https://ru.wargaming.net/developers/',
+				'tsGroupFriend'=>'Друг',
+				'tsGroupMember'=>'Солдат',
 		),
 );
