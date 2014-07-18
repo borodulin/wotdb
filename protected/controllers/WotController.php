@@ -32,9 +32,9 @@ class WotController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated users to access all actions
-			//	'users'=>array('@'),
-				'users'=>array('*'),
-			//	'expression'=>'WotPlayer::isClanPlayer($user->id)',
+				'users'=>array('@'),
+			//	'users'=>array('*'),
+				'expression'=>'WotPlayer::isClanPlayer($user->id)',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
