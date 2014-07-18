@@ -481,6 +481,7 @@ CREATE TABLE wot_tank (
   tank_name_i18n varchar(255) NOT NULL,
   tank_image varchar(255) DEFAULT NULL,
   is_premium tinyint(1) NOT NULL DEFAULT 0,
+  ivanner_kef decimal(3, 3) NOT NULL DEFAULT 0,
   PRIMARY KEY (tank_id),
   INDEX IDX_wot_tank_tank_level (tank_level),
   UNIQUE INDEX UK_wot_tank_tank_name (tank_name),
