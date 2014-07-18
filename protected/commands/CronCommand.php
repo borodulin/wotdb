@@ -229,7 +229,10 @@ SQL;
 					'armor_random_val'	=> '//*[@id="main"]/div[4]/div[6]/table[1]//tr[2]/td[1]',
 			));
 			foreach ($query as $key=>$val){
-				$query[$key]=strtr($val, array(','=>'.',' '=>''));
+				if(is_string($val))
+					$query[$key]=strtr($val, array(','=>'.',' '=>''));
+				else
+					$query[$key]=null;
 			}
 			$clan=WotClan::currentClan();
 			$clan->setAttributes($query,false);
