@@ -4,8 +4,6 @@
 -- Версия сервера: 5.7.4-m14-log
 -- Версия клиента: 4.1
 
-USE wotdb;
-
 CREATE TABLE tbl_lookup (
   id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(128) NOT NULL,
