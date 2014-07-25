@@ -55,8 +55,12 @@ return array(
 		'js'=>array('jquery.uniform.min.js'),
 		'css'=>array('css/uniform.default.min.css'),
 	),
-	
-		
+	'data-tables'=>array(
+		'basePath'=>'ext.conquer.data-tables',
+		'js'=>array('media/js/jquery.dataTables.min.js','bootstrap/3/dataTables.bootstrap.js'),
+		'css'=>array('bootstrap/3/dataTables.bootstrap.css','font-awesome/dataTables.fontAwesome.css'),
+		'depends'=>array('jquery', 'font-awesome', 'bootstrap'),
+	),
 	'breakpoints'=>array(
 		'basePath'=>'ext.conquer.plugins.breakpoints',
 		'js'=>array('breakpoints.js'),
