@@ -21,6 +21,6 @@ SELECT
   ,(SELECT wpth.battles FROM wot_player_tank_history wpth WHERE wpth.player_id=wpt.player_id AND wpth.tank_id=wpt.tank_id AND wpth.updated_at<DATE(wpt.updated_at)  ORDER BY wpth.updated_at DESC LIMIT 1) pbattles
   FROM wot_player_tank wpt
   JOIN wot_player_clan wpc ON wpt.player_id = wpc.player_id AND wpc.escape_date IS NULL AND wpc.clan_id=:clan
-  JOIN wot_tank wt ON wpt.tank_id = wt.tank_id AND wt.tank_level=10 AND wpt.wins/wpt.battles*100<50) a
+  JOIN wot_tank wt ON wpt.tank_id = wt.tank_id AND wt.tank_level=:level AND wpt.wins/wpt.battles*100<50) a
   JOIN wot_player wp ON wp.player_id = a.player_id
   JOIN wot_tank wt ON wt.tank_id=a.tank_id
