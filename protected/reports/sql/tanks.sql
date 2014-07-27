@@ -8,8 +8,8 @@ SELECT
 FROM wot_player wp
   JOIN wot_player_clan wpc ON wpc.player_id = wp.player_id AND wpc.escape_date IS NULL AND wpc.clan_id = :clan
   JOIN wot_player_tank wpt ON wpt.player_id = wp.player_id
-  JOIN wot_tank wt ON wt.tank_id = wpt.tank_id AND wt.tank_level = 10
+  JOIN wot_tank wt ON wt.tank_id = wpt.tank_id AND wt.tank_level = :level
 JOIN (SELECT wpt.player_id, COUNT(1) cnt  FROM wot_player_tank wpt 
-        JOIN wot_tank wt ON wpt.tank_id = wt.tank_id AND wt.tank_level=10
+        JOIN wot_tank wt ON wpt.tank_id = wt.tank_id AND wt.tank_level=:level
         GROUP BY wpt.player_id) s
   ON s.player_id = wpt.player_id

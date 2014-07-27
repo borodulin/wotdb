@@ -1,3 +1,4 @@
+<?php $this->renderPartial('_levels'); ?>
 
 <table id="jqgrid"></table>
 <?php

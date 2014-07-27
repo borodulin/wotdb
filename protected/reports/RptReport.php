@@ -5,10 +5,12 @@ class RptReport
 	public static function getDefaultParams()
 	{
 		$userId= Yii::app()->user->id;
-		return array(
+		$params=array(
 			'clan'=>WotClan::currentClan()->clan_id,
 			'player'=>Yii::app()->user->id,
+			'level'=>isset($_GET['level'])?$_GET['level']:10,
 		);
+		return $params;
 	} 
 	
 	public static function execute($reportName, $params=array())
