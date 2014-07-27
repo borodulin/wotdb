@@ -1,3 +1,4 @@
+<?php $this->renderPartial('_levels'); ?>
 
 <div class="row-fluid">
 	<table id="jqgrid"></table>
