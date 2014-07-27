@@ -65,6 +65,7 @@ FUNCF;
 			'height'=>'auto',
 			'caption'=>'Посещаемость за месяц',
 			'viewrecords'=> true,
+			'rownumbers'=>true,
 	));
 	$cs->registerScript($this->getId().'jqGrid', $cellAttr.$formatter."\njQuery('#jqgrid').jqGrid($options);", CClientScript::POS_READY);
 	$cs->registerPackage('jqGrid');
