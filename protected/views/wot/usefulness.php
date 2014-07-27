@@ -38,6 +38,7 @@ $options=CJavaScript::encode(array(
 		'height'=>'auto',
 		'caption'=>'Полезность 300 боев на топах',
 		'viewrecords'=> true,
+		'rownumbers'=>true,
 ));
 
 $cs->registerScript($this->getId().'jqGrid', "jQuery('#jqgrid').jqGrid($options);", CClientScript::POS_READY);

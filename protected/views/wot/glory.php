@@ -42,6 +42,7 @@ FUNCF;
 			array('name'=>'glory_position','index'=>'glory_position','width'=>80,'align'=>'right','sorttype'=>'js:function(cellValue){return cellValue == 0 ? 99999999 : Number(cellValue);}','cellattr'=>'js:jqcCellattr'),
 		),
 		'rowNum'=>1000,
+		'rownumbers'=>true,
 	//	'rowList'=>array( 10, 20, 30 ),
 		'sortname'=>'glory_points',
 		'sortorder'=>'desc',

@@ -38,6 +38,7 @@ $options=CJavaScript::encode(array(
 		'height'=>'auto',
 		'caption'=>'Игроки клана',
 		'viewrecords'=> true,
+		'rownumbers'=>true,
 ));
 
 $cs=Yii::app()->clientScript;

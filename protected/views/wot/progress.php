@@ -76,6 +76,7 @@ $options=CJavaScript::encode(array(
 		'height'=>'auto',
 		'caption'=>'Прогресс за последние 2 суток',
 		'viewrecords'=> true,
+		'rownumbers'=>true,
 ));
 
 $cs->registerScript($this->getId().'jqGrid', "jQuery('#jqgrid').jqGrid($options);", CClientScript::POS_READY);
