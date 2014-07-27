@@ -9,7 +9,7 @@
 						$class=' active';
 					else
 						$class='';
-					echo CHtml::link($level,array('hangars', 'level'=>$level), array('class'=>'btn btn-default'.$class));
+					echo CHtml::link($level,array($this->action->id, 'level'=>$level), array('class'=>'btn btn-default'.$class));
 				;
 			} ?>
 		</div>
