@@ -11,7 +11,7 @@ SELECT
   wpt.player_id,
   SUM(wpt.wins*(CASE WHEN wpt.battles>300 THEN 300/wpt.battles ELSE 1 END)/
   (CASE WHEN wpt.battles>300 THEN wpt.battles ELSE 300 END)*wt.ivanner_kef)/a.skef AS skef,
-  AVG(CASE WHEN wpt.battles>300 THEN 300 ELSE wpt.battles END) usefulness,
+  AVG(CASE WHEN wpt.battles<300 THEN 300 ELSE wpt.battles END) usefulness,
   COUNT(wpt.tank_id) tops,
   SUM(wpt.wins)/SUM(wpt.battles)*100 pp
   FROM wot_player_tank wpt
