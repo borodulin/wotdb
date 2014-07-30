@@ -114,7 +114,7 @@ UPDATE wot_player wp
   FROM wot_player_statistic wps
   JOIN (SELECT
       wpt.player_id,
-      SUM(wt.tank_level * wpt.battles)/wps.battles midl,
+      SUM(wt.tank_level * wpt.battles)/sum(wpt.battles) midl,
       GREATEST(0,(wps.damage_dealt/SUM(etv.dmg*wpt.battles)-0.22)/(1-0.22)) rDAMAGEc,
       GREATEST(0,LEAST(wps.damage_dealt/SUM(etv.dmg*wpt.battles)+0.2,(wps.frags/SUM(etv.frag*wpt.battles)-0.12)/(1-0.12))) rFRAGc,
       GREATEST(0,LEAST(wps.damage_dealt/SUM(etv.dmg*wpt.battles)+0.1,(wps.spotted/SUM(etv.spot*wpt.battles)-0.38)/(1-0.38))) rSPOTc,
