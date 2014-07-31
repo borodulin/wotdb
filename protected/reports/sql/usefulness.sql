@@ -4,7 +4,7 @@ SELECT
   a.usefulness,
   a.pp,
   a.tops,
-  b.fp*POWER(a.skef, 3)*POWER(wps.frags/wps.battles,2)*(CASE WHEN wps.battles>1000 THEN wps.hits_percents ELSE 0 END) strength
+  b.fp strength
   FROM wot_player wp
   JOIN 
 (SELECT 
