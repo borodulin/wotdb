@@ -127,9 +127,8 @@ SQL;
 				}
 
 				if(preg_match('/^\w+/', (string)$client, $matches)){
-						$playerName=$matches[0];
-						$player=WotPlayer::model()->with(array('playerClan'))->findByAttributes(array('player_name'=>$playerName));
-					}
+					$playerName=$matches[0];
+					$player=WotPlayer::model()->with(array('playerClan'))->findByAttributes(array('player_name'=>$playerName));
 				}
 				if(empty($player)){
 					$teamspeak=WotTeamspeak::model()->with(array('player', 'player.playerClan'))->findByPk($info['client_database_id']);
