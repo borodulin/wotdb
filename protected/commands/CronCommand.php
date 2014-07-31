@@ -126,15 +126,17 @@ SQL;
 					$clientGroups[$sgid] = $ts3->serverGroupGetById($sgid);
 				}
 
-				$teamspeak=WotTeamspeak::model()->with(array('player', 'player.playerClan'))->findByPk($info['client_database_id']);
-				if(empty($teamspeak)){
-					if(preg_match('/^\w+/', (string)$client, $matches)){
+				if(preg_match('/^\w+/', (string)$client, $matches)){
 						$playerName=$matches[0];
 						$player=WotPlayer::model()->with(array('playerClan'))->findByAttributes(array('player_name'=>$playerName));
 					}
 				}
-				else
-					$player=$teamspeak->player;
+				if(empty($player)){
+					$teamspeak=WotTeamspeak::model()->with(array('player', 'player.playerClan'))->findByPk($info['client_database_id']);
+					if(!empty($teamspeak)){
+						$player=$teamspeak->player;
+					}
+				}
 				if(!empty($player))
 				{
 					if(empty($player->playerClan)){
