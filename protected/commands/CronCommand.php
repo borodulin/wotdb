@@ -130,8 +130,8 @@ SQL;
 					$playerName=$matches[0];
 					$player=WotPlayer::model()->with(array('playerClan'))->findByAttributes(array('player_name'=>$playerName));
 				}
+				$teamspeak=WotTeamspeak::model()->with(array('player', 'player.playerClan'))->findByPk($info['client_database_id']);
 				if(empty($player)){
-					$teamspeak=WotTeamspeak::model()->with(array('player', 'player.playerClan'))->findByPk($info['client_database_id']);
 					if(!empty($teamspeak)){
 						$player=$teamspeak->player;
 					}
