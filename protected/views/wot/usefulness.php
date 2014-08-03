@@ -29,7 +29,7 @@ $options=CJavaScript::encode(array(
 		//	array('name'=>'wn6','index'=>'wn6','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
 		//	array('name'=>'updated_at','index'=>'updated_at','width'=>110,'align'=>'right','sorttype'=>'date','firstsortorder'=>'desc','formatter'=>'date','formatoptions'=>array('srcformat'=>'Y-m-d H:i:s','newformat'=>'d.m.Y H:i')),
 			array('name'=>'usefulness','index'=>'usefulness','width'=>80,'align'=>'right','formatter'=>'number','sorttype'=>'number','firstsortorder'=>'desc'),
-			array('name'=>'strength','index'=>'strength','width'=>120,'align'=>'right','formatter'=>'number','sorttype'=>'number','firstsortorder'=>'desc'),
+		//	array('name'=>'strength','index'=>'strength','width'=>120,'align'=>'right','formatter'=>'number','sorttype'=>'number','firstsortorder'=>'desc'),
 		),
 		'rowNum'=>1000,
 	//	'rowList'=>array( 10, 20, 30 ),
