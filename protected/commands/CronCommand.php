@@ -143,12 +143,12 @@ SQL;
 							try {
 								$client->addServerGroup($friendGroup->getId());
 							} catch (Exception $e) {
-								CVarDumper::dump($e);
+								//CVarDumper::dump($e);
 							}
 							try {
 								$client->remServerGroup($memberGroup->getId());
 							} catch (Exception $e) {
-								CVarDumper::dump($e);
+								//CVarDumper::dump($e);
 							}
 						}
 					}
@@ -173,14 +173,14 @@ SQL;
 						try {
 							$client->remServerGroup($memberGroup->getId());
 						} catch (Exception $e) {
-							CVarDumper::dump($e);
+							//CVarDumper::dump($e);
 						}
 					}
 					if(!isset($clientGroups[$friendGroup->getId()]));{
 						try {
 							$client->addServerGroup($friendGroup->getId());
 						} catch (Exception $e) {
-							CVarDumper::dump($e);
+							//CVarDumper::dump($e);
 						}
 					}
 				}
