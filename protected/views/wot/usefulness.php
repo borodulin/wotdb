@@ -16,7 +16,7 @@ $cs->registerScript(__CLASS__. $this->getId().'2', $formatter, CClientScript::PO
 $options=CJavaScript::encode(array(
 		'datatype'=>'local',
 		'data'=>RptReport::execute('usefulness'),
-		'colNames'=>array('Игрок', 'Проц. побед', 'Кол-во топов', '300 боев', 'Сила(Ivanner)'),
+		'colNames'=>array('Игрок', 'Проц. побед', 'Кол-во топов', '300 боев'),
 		'colModel'=>array(
 			array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left','formatter'=>'js:linkFormatter'),
 			array('name'=>'pp','index'=>'pp','width'=>100,'align'=>'right','formatter'=>'number','sorttype'=>'number','firstsortorder'=>'desc'),
