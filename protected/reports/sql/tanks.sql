@@ -13,3 +13,4 @@ JOIN (SELECT wpt.player_id, COUNT(1) cnt  FROM wot_player_tank wpt
         JOIN wot_tank wt ON wpt.tank_id = wt.tank_id AND wt.tank_level=:level
         GROUP BY wpt.player_id) s
   ON s.player_id = wpt.player_id
+  ORDER BY s.cnt DESC 
