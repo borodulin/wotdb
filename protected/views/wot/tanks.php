@@ -6,15 +6,14 @@
 $options=CJavaScript::encode(array(
 		'datatype'=>'local',
 		'data'=>RptReport::execute('tanks'),
-		'colNames'=>array('Танк', 'Игрок', 'Боев', 'Побед', 'Процент побед'),
+		'colNames'=>array('Танк', 'Бойцы', 'Боев(сред.)', 'Проц. побед'),
 		'colModel'=>array(
-			array('name'=>'tank_localized_name','index'=>'tank_localized_name','width'=>100),
-			array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left','summaryType'=>'count'),
-			array('name'=>'battles','index'=>'battles','width'=>80,'align'=>'right','sorttype'=>'number'),
-			array('name'=>'wins','index'=>'wins','width'=>60,'align'=>'right','sorttype'=>'number'),
-			array('name'=>'wp','index'=>'wp','width'=>100, 'align'=>'right','sorttype'=>'number','formatter'=>'number'),
+			array('name'=>'tank_localized_name','index'=>'tank_localized_name','width'=>140),
+			array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left','summaryType'=>'count', 'summaryTpl'=>'<div align="right" width="100%"><b>{0}</b></div>','sorttype'=>'number',),
+			array('name'=>'battles','index'=>'battles','width'=>100,'align'=>'right','sorttype'=>'number', 'summaryType'=>'avg', 'summaryTpl'=>'<b>{0}</b>', 'formatter'=>'number'),
+			array('name'=>'wp','index'=>'wp','width'=>100, 'align'=>'right','sorttype'=>'number','formatter'=>'number', 'summaryType'=>'avg', 'summaryTpl'=>'<b>{0}</b>'),
 		),
-		'rowNum'=>1000,
+		'rowNum'=>2000,
 	//	'rowList'=>array( 10, 20, 30 ),
 		'sortname'=>'wp',
 		'sortorder'=>'desc',
@@ -25,10 +24,11 @@ $options=CJavaScript::encode(array(
 		'groupingView'=> array(
 			'groupField'=>array('tank_localized_name'),
 			'groupColumnShow'=>array(true),
-			'groupText'=> array('<b>{0}</b> Всего танков: {player_name}','{0} Sum of totaly: {b}'),
 			'groupCollapse'=>true,
 			'groupOrder'=>array('asc'),
 		//	'groupSummary'=>array(false, false),
+			'groupSummaryPos'=>array('header'),
+			'hideFirstGroupCol'=>true,
 		),
 ));
 $cs=Yii::app()->clientScript;

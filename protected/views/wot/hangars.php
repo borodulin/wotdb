@@ -6,12 +6,11 @@
 $options=CJavaScript::encode(array(
 		'datatype'=>'local',
 		'data'=>RptReport::execute('tanks'),
-		'colNames'=>array('Игрок', 'Танк', 'Боев', 'Побед', 'Проц. побед'),
+		'colNames'=>array('Игрок', 'Танк', 'Боев(средн.)', 'Проц. побед'),
 		'colModel'=>array(
 			array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left'),
-			array('name'=>'tank_localized_name','index'=>'tank_localized_name','width'=>100, 'summaryType'=>'count', 'summaryTpl'=>'<div align="right" width="100%"><b>{0}</b></div>','sorttype'=>'number',),
-			array('name'=>'battles','index'=>'battles','width'=>80,'align'=>'right','sorttype'=>'number', 'summaryType'=>'sum', 'summaryTpl'=>'<b>{0}</b>'),
-			array('name'=>'wins','index'=>'wins','width'=>60,'align'=>'right','sorttype'=>'number', 'summaryType'=>'sum','summaryTpl'=>'<b>{0}</b>'),
+			array('name'=>'tank_localized_name','index'=>'tank_localized_name','width'=>120, 'summaryType'=>'count', 'summaryTpl'=>'<div align="right" width="100%"><b>{0}</b></div>','sorttype'=>'number',),
+			array('name'=>'battles','index'=>'battles','width'=>100,'align'=>'right','sorttype'=>'number', 'summaryType'=>'avg', 'summaryTpl'=>'<b>{0}</b>', 'formatter'=>'number', 'formatoptions'=>array('decimalPlaces'=>0)),
 			array('name'=>'wp','index'=>'wp','width'=>100, 'align'=>'right','sorttype'=>'number','formatter'=>'number', 'summaryType'=>'avg', 'formatter'=>'number','summaryTpl'=>'<b>{0}</b>'),
 		),
 		'rowNum'=>2000,
