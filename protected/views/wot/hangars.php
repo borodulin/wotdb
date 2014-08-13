@@ -28,8 +28,9 @@ $options=CJavaScript::encode(array(
 			'groupColumnShow'=>array(true),
 			'groupText'=> array('<b>{0}</b> Всего танков: {player_name}','{0} Sum of totaly: {b}'),
 			'groupCollapse'=>true,
-			'groupOrder'=>array('desc'),
-			'groupSummary'=>array(false, false),
+			//'groupOrder'=>array('desc'),
+			//'groupSummary'=>array(false, false),
+			'groupSummaryPos'=>'header'
 		),
 ));
 $cs=Yii::app()->clientScript;
