@@ -109,7 +109,15 @@ UPDATE wot_player wp
   +log(1.732,wps.capture_points/wps.battles+1)*150
   +wps.dropped_capture_points/wps.battles*150 effect,
   
-  980*a.rDAMAGEc + 210*a.rDAMAGEc*a.rFRAGc + 155*a.rFRAGc*a.rSPOTc + 75*a.rDEFc*a.rFRAGc + 145*LEAST(1.8,a.rWINc) wn8
+  980*a.rDAMAGEc + 210*a.rDAMAGEc*a.rFRAGc + 155*a.rFRAGc*a.rSPOTc + 75*a.rDEFc*a.rFRAGc + 145*LEAST(1.8,a.rWINc) wn8,
+
+  LN(wps.battles)/10*(wps.xp/wps.battles+wps.damage_dealt/wps.battles*(
+    2*wps.wins/wps.battles+
+    0.9*wps.frags/wps.battles+
+    0.5*wps.spotted/wps.battles+
+    0.5*wps.capture_points/wps.battles+
+    0.5*wps.dropped_capture_points/wps.battles)
+  ) bronesite
 
   FROM wot_player_statistic wps
   JOIN (SELECT
@@ -127,7 +135,7 @@ UPDATE wot_player wp
     JOIN wot_player_clan wpc ON wpt.player_id = wpc.player_id AND wpc.escape_date IS NULL AND wpc.clan_id=:clan
     GROUP BY wpt.player_id) a ON a.player_id = wps.player_id
     WHERE wps.statistic_id=1) a ON a.player_id=wp.player_id
-  SET wp.wn6=a.wn6, wp.wn7=a.wn7, wp.wn8=a.wn8, wp.effect=a.effect
+  SET wp.wn6=a.wn6, wp.wn7=a.wn7, wp.wn8=a.wn8, wp.effect=a.effect, wp.bronesite=a.bronesite
 SQL;
 		Yii::app()->db->createCommand($sql)->execute(array('clan'=>WotClan::currentClan()->clan_id));
 	}
