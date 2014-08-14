@@ -19,7 +19,7 @@ $options=CJavaScript::encode(array(
 			array('name'=>'damage','index'=>'damage','width'=>70,'align'=>'right','sorttype'=>'number','firstsortorder'=>'desc', 'formatter'=>'number'),
 			array('name'=>'effect','index'=>'effect','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),			
 			array('name'=>'wn8','index'=>'wn8','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
-			array('name'=>'bronesite','index'=>'bronesite','width'=>100,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
+			array('name'=>'bronesite','index'=>'bronesite','width'=>90,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
 		),
 		'rowNum'=>1000,
 	//	'rowList'=>array( 10, 20, 30 ),
