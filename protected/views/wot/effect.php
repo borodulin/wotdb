@@ -5,7 +5,7 @@
 $options=CJavaScript::encode(array(
 		'datatype'=>'local',
 		'data'=>RptReport::execute('players'),
-		'colNames'=>array('Игрок', 'Начал играть', 'Боев', 'Проц. побед','Сред. опыт','Макс. опыт', 'Дамаг','РЭ','WN7','WN8'),
+		'colNames'=>array('Игрок', 'Начал играть', 'Боев', 'Проц. побед','Сред. опыт','Макс. опыт', 'Дамаг','РЭ','WN8', 'Броне-сайт'),
 		'colModel'=>array(
 			array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left'),
 	//		array('name'=>'created_at','index'=>'created_at','width'=>50,'align'=>'right','summaryType'=>'sum','sorttype'=>'number'),
@@ -17,9 +17,9 @@ $options=CJavaScript::encode(array(
 			array('name'=>'battle_avg_xp','index'=>'battle_avg_xp','width'=>80,'align'=>'right','sorttype'=>'number','firstsortorder'=>'desc'),
 			array('name'=>'max_xp','index'=>'max_xp','width'=>80,'align'=>'right','sorttype'=>'number','firstsortorder'=>'desc'),
 			array('name'=>'damage','index'=>'damage','width'=>70,'align'=>'right','sorttype'=>'number','firstsortorder'=>'desc', 'formatter'=>'number'),
-			array('name'=>'effect','index'=>'effect','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
-			array('name'=>'wn7','index'=>'wn7','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
-			array('name'=>'wn8','index'=>'wn8','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),			
+			array('name'=>'effect','index'=>'effect','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),			
+			array('name'=>'wn8','index'=>'wn8','width'=>80,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
+			array('name'=>'bronesite','index'=>'bronesite','width'=>100,'align'=>'right','sorttype'=>'number','formatter'=>'number','firstsortorder'=>'desc'),
 		),
 		'rowNum'=>1000,
 	//	'rowList'=>array( 10, 20, 30 ),
