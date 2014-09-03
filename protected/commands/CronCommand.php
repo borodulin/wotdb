@@ -205,11 +205,11 @@ SQL;
 		if($url->execute('http://ivanerr.ru/lt/clan/'.WotClan::currentClan()->clan_id)){
 			$xpath=new XmlPath($url->content);
 			$query=$xpath->queryAll(array(
-					'ivanner_pos'		=> '//*[@id="sidebar"]/ul/li/h2/span[1]',
+					'ivanner_pos'		=> '//*[@id="position"]',
 				//	'ivanner_popularity' => '//*[@id="sidebar"]/ul/li/h2/span[2]',
-					'ivanner_strength'	=> '//*[@id="sidebar"]/ul/li/h2/span[3]/b',
-					'ivanner_firepower'	=> '//*[@id="sidebar"]/ul/li/h2/text()[3]',
-					'ivanner_skill'		=> '//*[@id="sidebar"]/ul/li/h2/text()[2]',
+					'ivanner_strength'	=> '//*[@id="totalrate"]/span/b',
+					'ivanner_firepower'	=> '//*[@id="firepower"]',
+					'ivanner_skill'		=> '//*[@id="skillz"]',
 			));
 			$query=array_map(function($s){ return preg_replace('/\D/', '', $s);}, $query);
 			$clan=WotClan::currentClan();
