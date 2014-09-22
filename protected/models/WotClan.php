@@ -24,9 +24,16 @@ class WotClan extends CActiveRecord
 	public static function currentClan()
 	{
 		if(empty(self::$_clan)){
-			if(!isset(Yii::app()->params['clan']))
-				throw new CException('You need specify clan in config params');
+			if(!isset(Yii::app()->params['clan']) || !is_numeric(Yii::app()->params['clan']))
+				throw new CHttpException(404,'You need specify clan in config params');
 			self::$_clan=self::model()->findByPk(Yii::app()->params['clan']);
+		}
+		if(empty(self::$_clan)){
+			$clan=new WotClan();
+			$clan->clan_id=Yii::app()->params['clan'];
+			$clan->clan_name='New clan';
+			$clan->save(false);
+			self::$_clan=$clan;
 		}
 		return self::$_clan;
 	}	
