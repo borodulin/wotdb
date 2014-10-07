@@ -1,8 +1,25 @@
-﻿-- Скрипт сгенерирован Devart dbForge Studio for MySQL, Версия 6.1.166.0
+﻿--
+-- Скрипт сгенерирован Devart dbForge Studio for MySQL, Версия 6.2.280.0
 -- Домашняя страница продукта: http://www.devart.com/ru/dbforge/mysql/studio
--- Дата скрипта: 11.07.2014 11:08:50
+-- Дата скрипта: 07.10.2014 12:59:56
 -- Версия сервера: 5.7.4-m14-log
 -- Версия клиента: 4.1
+--
+
+
+CREATE TABLE armor (
+  column1 varchar(255) DEFAULT NULL,
+  player_name varchar(255) DEFAULT NULL,
+  column3 varchar(255) DEFAULT NULL,
+  column4 varchar(255) DEFAULT NULL,
+  bronesite decimal(10, 2) DEFAULT NULL,
+  column6 varchar(255) DEFAULT NULL,
+  UNIQUE INDEX UK_armor_player_name (player_name)
+)
+ENGINE = INNODB
+AVG_ROW_LENGTH = 163
+CHARACTER SET utf8
+COLLATE utf8_general_ci;
 
 CREATE TABLE tbl_lookup (
   id int(11) NOT NULL AUTO_INCREMENT,
@@ -87,7 +104,7 @@ CREATE TABLE wot_arena (
   PRIMARY KEY (arena_id)
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 1
 AVG_ROW_LENGTH = 8192
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
@@ -155,6 +172,7 @@ CREATE TABLE wot_player (
   wn6 decimal(10, 2) NOT NULL DEFAULT 0.00,
   wn7 decimal(10, 2) DEFAULT NULL,
   wn8 decimal(10, 2) DEFAULT NULL,
+  bronesite decimal(10, 2) DEFAULT NULL,
   global_rating int(11) DEFAULT NULL,
   last_battle_time datetime DEFAULT NULL,
   logout_at datetime DEFAULT NULL,
@@ -194,6 +212,24 @@ CREATE TABLE wot_tank_nation (
 )
 ENGINE = INNODB
 AVG_ROW_LENGTH = 3276
+CHARACTER SET utf8
+COLLATE utf8_general_ci;
+
+CREATE TABLE wot_wn8_etv (
+  IDNum int(11) NOT NULL,
+  name varchar(255) NOT NULL,
+  frag decimal(10, 2) NOT NULL,
+  dmg decimal(10, 2) NOT NULL,
+  spot decimal(10, 2) NOT NULL,
+  def decimal(10, 2) NOT NULL,
+  win decimal(10, 2) NOT NULL,
+  Tier int(11) NOT NULL,
+  Nation varchar(255) DEFAULT NULL,
+  Class varchar(255) DEFAULT NULL,
+  PRIMARY KEY (IDNum)
+)
+ENGINE = INNODB
+AVG_ROW_LENGTH = 187
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -332,7 +368,7 @@ CREATE TABLE wot_clan_history (
   REFERENCES wot_clan (clan_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = INNODB
-AVG_ROW_LENGTH = 8192
+AVG_ROW_LENGTH = 168
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -393,6 +429,7 @@ CREATE TABLE wot_player_history (
   wn6 decimal(10, 2) NOT NULL DEFAULT 0.00,
   wn7 decimal(10, 2) DEFAULT NULL,
   wn8 decimal(10, 2) DEFAULT NULL,
+  bronesite decimal(10, 2) DEFAULT NULL,
   PRIMARY KEY (player_id, updated_at),
   CONSTRAINT FK_wot_player_history1_wot_player_player_id FOREIGN KEY (player_id)
   REFERENCES wot_player (player_id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -479,17 +516,16 @@ CREATE TABLE wot_tank (
   tank_name_i18n varchar(255) NOT NULL,
   tank_image varchar(255) DEFAULT NULL,
   is_premium tinyint(1) NOT NULL DEFAULT 0,
-  ivanner_kef decimal(3, 3) NOT NULL DEFAULT 0,
+  ivanner_kef decimal(3, 3) NOT NULL DEFAULT 0.000,
   PRIMARY KEY (tank_id),
   INDEX IDX_wot_tank_tank_level (tank_level),
-  UNIQUE INDEX UK_wot_tank_tank_name (tank_name),
   CONSTRAINT FK_wot_tank_wot_tank_class_tank_class_id FOREIGN KEY (tank_class_id)
   REFERENCES wot_tank_class (tank_class_id) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT FK_wot_tank_wot_tank_nation_tank_nation_id FOREIGN KEY (tank_nation_id)
   REFERENCES wot_tank_nation (tank_nation_id) ON DELETE RESTRICT ON UPDATE RESTRICT
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 64818
+AUTO_INCREMENT = 65314
 AVG_ROW_LENGTH = 344
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
@@ -502,8 +538,8 @@ CREATE TABLE wot_teamspeak (
   REFERENCES wot_player (player_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = INNODB
-AUTO_INCREMENT = 87
-AVG_ROW_LENGTH = 282
+AUTO_INCREMENT = 322
+AVG_ROW_LENGTH = 103
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -671,7 +707,7 @@ CREATE TABLE wot_presense (
   REFERENCES wot_teamspeak (client_database_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = INNODB
-AVG_ROW_LENGTH = 48
+AVG_ROW_LENGTH = 51
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -688,24 +724,6 @@ CREATE TABLE wot_province_history (
   REFERENCES wot_province (province_id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 ENGINE = INNODB
-CHARACTER SET utf8
-COLLATE utf8_general_ci;
-
-CREATE TABLE wot_wn8_etv (
-  IDNum int(11) NOT NULL,
-  name varchar(255) NOT NULL,
-  frag decimal(10, 2) NOT NULL,
-  dmg decimal(10, 2) NOT NULL,
-  spot decimal(10, 2) NOT NULL,
-  def decimal(10, 2) NOT NULL,
-  win decimal(10, 2) NOT NULL,
-  Tier int(11) NOT NULL,
-  Nation varchar(255) DEFAULT NULL,
-  Class varchar(255) DEFAULT NULL,
-  PRIMARY KEY (IDNum)
-)
-ENGINE = INNODB
-AVG_ROW_LENGTH = 187
 CHARACTER SET utf8
 COLLATE utf8_general_ci;
 
@@ -792,8 +810,7 @@ COLLATE utf8_general_ci;
 
 DELIMITER $$
 
-CREATE
-TRIGGER tr_wot_clan_update
+CREATE TRIGGER tr_wot_clan_update
 AFTER UPDATE
 ON wot_clan
 FOR EACH ROW
@@ -827,8 +844,7 @@ BEGIN
 END
 $$
 
-CREATE
-TRIGGER tr_wot_player_achievment_update
+CREATE TRIGGER tr_wot_player_achievment_update
 AFTER UPDATE
 ON wot_player_achievment
 FOR EACH ROW
@@ -841,8 +857,7 @@ BEGIN
 END
 $$
 
-CREATE
-TRIGGER tr_wot_player_clan_update
+CREATE TRIGGER tr_wot_player_clan_update
 AFTER UPDATE
 ON wot_player_clan
 FOR EACH ROW
@@ -853,8 +868,7 @@ BEGIN
 END
 $$
 
-CREATE
-TRIGGER tr_wot_player_statistic_update
+CREATE TRIGGER tr_wot_player_statistic_update
 AFTER UPDATE
 ON wot_player_statistic
 FOR EACH ROW
@@ -901,8 +915,7 @@ BEGIN
 END
 $$
 
-CREATE
-TRIGGER tr_wot_player_tank_update
+CREATE TRIGGER tr_wot_player_tank_update
 AFTER UPDATE
 ON wot_player_tank
 FOR EACH ROW
@@ -911,7 +924,8 @@ BEGIN
       updated_at
     FROM wot_player wp
     WHERE wp.player_id = new.player_id);
-  IF new.battles > old.battles THEN
+  IF ((@updated_at IS NOT NULL)
+    AND (new.battles > old.battles)) THEN
     INSERT INTO wot_player_tank_history (updated_at
     , player_id
     , tank_id
@@ -927,25 +941,24 @@ BEGIN
 END
 $$
 
-CREATE
-TRIGGER tr_wot_player_update
+CREATE TRIGGER tr_wot_player_update
 AFTER UPDATE
 ON wot_player
 FOR EACH ROW
 BEGIN
-  INSERT INTO wot_player_history (updated_at, player_id, max_xp, effect, wn6, wn7, wn8)
-    VALUES (new.updated_at, new.player_id, new.max_xp, new.effect, new.wn6, new.wn7, new.wn8)
-  ON DUPLICATE KEY UPDATE max_xp = new.max_xp, effect = new.effect, wn6 = new.wn6, wn7 = new.wn7, wn8 = new.wn8;
+  INSERT INTO wot_player_history (updated_at, player_id, max_xp, effect, wn6, wn7, wn8, bronesite)
+    VALUES (new.updated_at, new.player_id, new.max_xp, new.effect, new.wn6, new.wn7, new.wn8, new.bronesite)
+  ON DUPLICATE KEY UPDATE max_xp = new.max_xp, effect = new.effect, wn6 = new.wn6, wn7 = new.wn7, wn8 = new.wn8, bronesite = new.bronesite;
 END
 $$
 
-CREATE
-TRIGGER wot_player_tank_statistic_update
+CREATE TRIGGER wot_player_tank_statistic_update
 AFTER UPDATE
 ON wot_player_tank_statistic
 FOR EACH ROW
 BEGIN
-  IF new.battles <> old.battles THEN
+  IF (new.battles <> old.battles)
+    AND new.updated_at IS NOT NULL THEN
     INSERT INTO wot_player_tank_statistic_history (player_id
     , tank_id
     , statistic_id
