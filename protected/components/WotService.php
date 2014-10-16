@@ -378,21 +378,23 @@ class WotService
 					$player=$clan->players[$playerId];
 					$achievments=$player->achievments;
 					$player->updated_at=date('Y-m-d H:i',$data['updated_at']);
-					foreach ($data['achievements'] as $key=>$value){
-						if($value>0){
-							if(isset($achievments[$key])){
-								$playerAchievment=$achievments[$key];
-							}else{
-								$achievment=WotAchievment::achievment($key);
-								$playerAchievment=new WotPlayerAchievment();
-								$playerAchievment->achievment_id=$achievment->achievment_id;
-								$playerAchievment->player_id=$player->player_id;
-									
-							}
-							if($playerAchievment->cnt!=$value){
-								$playerAchievment->cnt=$value;
-								$playerAchievment->updated_at=$player->updated_at;
-								$playerAchievment->save(false);
+					if(is_array($data['achievements'])){
+						foreach ($data['achievements'] as $key=>$value){
+							if($value>0){
+								if(isset($achievments[$key])){
+									$playerAchievment=$achievments[$key];
+								}else{
+									$achievment=WotAchievment::achievment($key);
+									$playerAchievment=new WotPlayerAchievment();
+									$playerAchievment->achievment_id=$achievment->achievment_id;
+									$playerAchievment->player_id=$player->player_id;
+										
+								}
+								if($playerAchievment->cnt!=$value){
+									$playerAchievment->cnt=$value;
+									$playerAchievment->updated_at=$player->updated_at;
+									$playerAchievment->save(false);
+								}
 							}
 						}
 					}
