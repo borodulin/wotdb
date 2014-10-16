@@ -25,6 +25,12 @@ class WotClanRole extends CActiveRecord
 			$model->clan_role_name=$role_i18n;
 			$model->save(false);
 			self::$_models=self::model()->findAll(array('index'=>'clan_role_id'));
+		}else{
+			$model=self::$_models[$roleId];
+			if($model->clan_role_name!=$role_i18n){
+				$model->clan_role_name=$role_i18n;
+				$model->save(false);
+			}
 		}
 		return self::$_models[$roleId]->clan_role_id;
 	}
