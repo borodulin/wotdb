@@ -503,11 +503,11 @@ class WotService
 				if(isset($data['glory_points_block'])){
 					$block=$data['glory_points_block'];
 					$glory=$player->getGlory();
-					if(preg_match('/id="js-glory-points".*?>(.*?)<\/a>/', $block,$matches)){
-						 $glory->glory_position=preg_replace('/\D/', '', $matches[1])."\n";
+					if(preg_match('/g_goto=(\d+)/', $block,$matches)){
+						 $glory->glory_position=$matches[1];
 					}
-					if(preg_match('/Очки славы: (.*?)</', $block,$matches)){
-						$glory->glory_points=preg_replace('/\D/', '', $matches[1]);
+					if(preg_match('/class=\\"js-points-count\\">(\d+)<\/span>/', $block,$matches)){
+						$glory->glory_points=$matches[1];
 					}
 					$glory->save(false);
 				}
