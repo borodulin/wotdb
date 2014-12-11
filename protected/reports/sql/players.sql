@@ -14,6 +14,7 @@ SELECT
   wp.wn7,
   wp.wn8,
   wp.bronesite,
+  wp.ivanerr,
   wps.damage_dealt / wps.battles damage
 FROM wot_player wp
   JOIN wot_player_statistic wps ON wp.player_id = wps.player_id AND wps.statistic_id = 1
