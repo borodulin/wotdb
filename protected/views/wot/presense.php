@@ -44,7 +44,7 @@ FUNCF;
 		array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left'),
 		array('name'=>'ivanerr','index'=>'ivanerr','width'=>50,'align'=>'right', 'sorttype'=>'number', 'firstsortorder'=>'desc'),
 	);
-	$colNames=array('Игрок', 'Топов');
+	$colNames=array('Игрок', 'Ivanerr');
 	foreach ($data['dates'] as $date){
 		$colModel[]=array('name'=>$date,'index'=>$date,'width'=>20,'align'=>'right','sorttype'=>'number', 'cellattr'=>'js:jqcCellattr','formatter'=>'js:jqcFormatter','firstsortorder'=>'desc');
 		$colNames[]=date('d', strtotime($date));
