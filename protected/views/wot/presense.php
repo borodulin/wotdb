@@ -42,7 +42,7 @@ FUNCF;
 	$data=RptPlayerPresense::execute('playerPresense');
 	$colModel=array(
 		array('name'=>'player_name','index'=>'player_name','width'=>140,'align'=>'left'),
-		array('name'=>'tops','index'=>'tops','width'=>50,'align'=>'right', 'sorttype'=>'number', 'firstsortorder'=>'desc'),
+		array('name'=>'ivanerr','index'=>'ivanerr','width'=>50,'align'=>'right', 'sorttype'=>'number', 'firstsortorder'=>'desc'),
 	);
 	$colNames=array('Игрок', 'Топов');
 	foreach ($data['dates'] as $date){
