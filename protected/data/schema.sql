@@ -173,7 +173,6 @@ CREATE TABLE wot_player (
   wn7 decimal(10, 2) DEFAULT NULL,
   wn8 decimal(10, 2) DEFAULT NULL,
   bronesite decimal(10, 2) DEFAULT NULL,
-  ivanerr decimal(6, 2) DEFAULT NULL,
   global_rating int(11) DEFAULT NULL,
   last_battle_time datetime DEFAULT NULL,
   logout_at datetime DEFAULT NULL,
