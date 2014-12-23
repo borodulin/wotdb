@@ -1,7 +1,6 @@
 SELECT
   wp.player_id,
   wp.player_name,
-  wp.ivanerr,
   a.usefulness,
   a.pp,
   a.tops
