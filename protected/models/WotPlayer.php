@@ -135,24 +135,7 @@ UPDATE wot_player wp
     JOIN wot_player_clan wpc ON wpt.player_id = wpc.player_id AND wpc.escape_date IS NULL AND wpc.clan_id=:clan
     GROUP BY wpt.player_id) a ON a.player_id = wps.player_id
     WHERE wps.statistic_id=1) a ON a.player_id=wp.player_id
-  LEFT JOIN 
-  (SELECT a.player_id, a.om*POWER(a.wp,3)*POWER(a.frags,2)*POWER(a.hp,2)*100/7.5383 ivanerr
-    FROM
-  (SELECT wp.player_id, wp.player_name, SUM(wt.ivanner_kef)*100/1550 om,
-    SUM(CASE WHEN wpt.battles>300 THEN wpt.wins*300/wpt.battles ELSE wpt.wins END/CASE WHEN wpt.battles<300 THEN wpt.battles ELSE 300 END)/SUM(wt.ivanner_kef) wp,
-    SUM(wps.frags)/SUM(wps.battles) frags,
-  --  SUM(wpts.frags)/SUM(wpts.battles) frags,
-    SUM(CASE WHEN wps.battles>1000 THEN wps.hits_percents ELSE 0 END)/SUM(CASE WHEN wps.battles>1000 THEN 1 ELSE 0 END)/100 hp
-    FROM wot_player wp
-    JOIN wot_player_clan wpc ON wp.player_id = wpc.player_id AND wpc.clan_id=93535 AND wpc.escape_date IS NULL 
-    JOIN wot_player_statistic wps ON wp.player_id = wps.player_id AND wps.statistic_id = 1
-    JOIN wot_player_tank wpt ON wp.player_id = wpt.player_id
-  --  JOIN wot_player_tank_statistic wpts ON wpt.player_id = wpts.player_id AND wpt.tank_id = wpts.tank_id AND wpts.statistic_id = 1
-    JOIN wot_tank wt ON wpt.tank_id = wt.tank_id AND wt.tank_level=10
-    GROUP BY wp.player_id
-    ) a) ivanerr ON ivanerr.player_id=wp.player_id
-
-  SET wp.wn6=a.wn6, wp.wn7=a.wn7, wp.wn8=a.wn8, wp.effect=a.effect, wp.bronesite=a.bronesite, wp.ivanerr=ivanerr.ivanerr
+  SET wp.wn6=a.wn6, wp.wn7=a.wn7, wp.wn8=a.wn8, wp.effect=a.effect, wp.bronesite=a.bronesite
 SQL;
 		Yii::app()->db->createCommand($sql)->execute(array('clan'=>WotClan::currentClan()->clan_id));
 	}
