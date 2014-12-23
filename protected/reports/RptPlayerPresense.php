@@ -19,7 +19,7 @@ class RptPlayerPresense extends RptReport
 		
 		foreach ($data as $row){
 			if(!isset($result[$row['player_id']])){
-				$result[$row['player_id']]=array('player_name'=>$row['player_name'],'ivanerr'=>$row['ivanerr']);
+				$result[$row['player_id']]=array('player_name'=>$row['player_name'],'tops'=>$row['tops']);
 				foreach ($dates as $date){
 					$result[$row['player_id']][$date]=0;
 				}
