@@ -2,11 +2,15 @@
 
 class CronCommand extends CConsoleCommand
 {
-	public function actionScan()
+	public function actionScan($clanId=null)
 	{
-		if(!isset(Yii::app()->params['clan']))
-			throw new CException('You need specify clan in config params');
-		WotService::scanClan(Yii::app()->params['clan']);
+		if(!empty($clanId))
+			WotService::scanClan($clanId);
+		else{
+			if(!isset(Yii::app()->params['clan']))
+				throw new CException('You need specify clan in config params');
+			WotService::scanClan(Yii::app()->params['clan']);
+		}
 	}
 
 	public function actionTanks()
