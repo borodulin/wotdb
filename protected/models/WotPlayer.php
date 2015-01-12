@@ -144,7 +144,7 @@ UPDATE wot_player wp
   --  SUM(wpts.frags)/SUM(wpts.battles) frags,
     SUM(CASE WHEN wps.battles>1000 THEN wps.hits_percents ELSE 0 END)/SUM(CASE WHEN wps.battles>1000 THEN 1 ELSE 0 END)/100 hp
     FROM wot_player wp
-    JOIN wot_player_clan wpc ON wp.player_id = wpc.player_id AND wpc.clan_id=93535 AND wpc.escape_date IS NULL 
+    JOIN wot_player_clan wpc ON wp.player_id = wpc.player_id AND wpc.clan_id=:clan AND wpc.escape_date IS NULL 
     JOIN wot_player_statistic wps ON wp.player_id = wps.player_id AND wps.statistic_id = 1
     JOIN wot_player_tank wpt ON wp.player_id = wpt.player_id
   --  JOIN wot_player_tank_statistic wpts ON wpt.player_id = wpts.player_id AND wpt.tank_id = wpts.tank_id AND wpts.statistic_id = 1
