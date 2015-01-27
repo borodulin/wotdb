@@ -19,21 +19,21 @@ $cs->registerScript($this->getId().'Index','Index.initPeityElements();', CClient
 		$this->renderPartial('_stat_block',array(
 			'increment'=>-1*WotClan::currentClan()->increment('ivanner_pos'),
 			'historyValues'=>$historyValues,
-			'tittle'=>'Рейтинг клана (Ivanner)',
+			'tittle'=>'Рейтинг клана (Ivanerr)',
 			'position'=>(1-WotClan::currentClan()->ivanner_pos/400)*100,
 			'number'=>WotClan::currentClan()->ivanner_pos,
 		));
 		$this->renderPartial('_stat_block',array(
 			'increment'=>WotClan::currentClan()->increment('ivanner_strength'),
 			'historyValues'=>WotClan::currentClan()->historyValues('ivanner_strength'),
-			'tittle'=>'Сила клана (Ivanner)',
+			'tittle'=>'Сила клана (Ivanerr)',
 			'position'=>WotClan::currentClan()->ivanner_strength/10,
 			'number'=>WotClan::currentClan()->ivanner_strength,
 		));
 		$this->renderPartial('_stat_block',array(
 			'increment'=>WotClan::currentClan()->increment('ivanner_firepower'),
 			'historyValues'=>WotClan::currentClan()->historyValues('ivanner_firepower'),
-			'tittle'=>'Огневая мощь (Ivanner)',
+			'tittle'=>'Огневая мощь (Ivanerr)',
 			'position'=>WotClan::currentClan()->ivanner_firepower,
 			'number'=>WotClan::currentClan()->ivanner_firepower,
 		));
