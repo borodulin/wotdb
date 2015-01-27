@@ -41,7 +41,7 @@ $cs->registerScript($this->getId().'Index','Index.initPeityElements();', CClient
 			'increment'=>WotClan::currentClan()->increment('ivanner_skill'),
 			'historyValues'=>WotClan::currentClan()->historyValues('ivanner_skill'),
 			'position'=>WotClan::currentClan()->ivanner_skill,
-			'tittle'=>'Скил (Ivanner)',
+			'tittle'=>'Скил (Ivanerr)',
 			'number'=>WotClan::currentClan()->ivanner_skill,				
 		));
 		$this->renderPartial('_stat_block',array(
