@@ -95,6 +95,7 @@ $config=CMap::mergeArray($config,array(
 				'jquery.min.js'=>'/scripts/jquery-1.10.2.min.js',
 			),
 		*/
+			'coreScriptPosition'=>CClientScript::POS_END,
 			'packages' =>require __DIR__.'/packages.php',
 		),
 		'widgetFactory' => array(
