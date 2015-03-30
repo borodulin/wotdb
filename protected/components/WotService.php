@@ -379,7 +379,7 @@ class WotService
 					$player=$clan->players[$playerId];
 					$achievments=$player->achievments;
 					$player->updated_at=date('Y-m-d H:i',$data['updated_at']);
-					if(is_array($data['achievements'])){
+					if(isset($data['achievements'])){
 						foreach ($data['achievements'] as $key=>$value){
 							if($value>0){
 								if(isset($achievments[$key])){
